@@ -226,11 +226,6 @@ if __name__ == "__main__":
 
     with gr.Blocks(css="style.css") as demo:
         gr.Markdown(DESCRIPTION)
-        gr.DuplicateButton(
-            value="Duplicate Space for private use",
-            elem_id="duplicate-button",
-            visible=os.getenv("SHOW_DUPLICATE_BUTTON") == "1",
-        )
         with gr.Group():
             with gr.Row():
                 prompt = gr.Text(
@@ -322,6 +317,4 @@ if __name__ == "__main__":
             api_name="run",
         )
 
-    demo.queue(api_open=False)
-    # demo.queue(max_size=20).launch()
-    demo.launch()
+    demo.queue().launch(share=True)
